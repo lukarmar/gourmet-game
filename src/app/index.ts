@@ -1,10 +1,10 @@
 import chalk from "chalk";
 
-import { TerminalController } from "@infrastructure/useCase/terminal/terminalUseCase";
 import { initialQuestion } from '@infrastructure/useCase/plates/injection'
-import { sleep } from '../infrastructure/utils/sleep'
+import { sleep } from '@infrastructure/utils/sleep'
+import { COMMAND_CLOSE_TERMINAL } from "@infrastructure/data";
 
-const temrinalController = new TerminalController()
+
 
 async function mainLoop(): Promise<any> {
   try {
@@ -16,18 +16,12 @@ async function mainLoop(): Promise<any> {
       chalk.magenta("------------------------")
     )
     console.draft(
-      chalk.gray.cyan(`Para sair digite ${chalk.bold.underline.red("sair")} \n`)
+      chalk.gray.cyan(`Para sair digite ${chalk.bold.underline.red(COMMAND_CLOSE_TERMINAL)} \n`)
     )
 
     await sleep(4000)
 
     await initialQuestion.run()
-
-    // if(answer === "n") {
-    //   temrinalController.closeTerminal()
-    //   console.log("Finish")
-    //   return;
-    // }
 
     return mainLoop()
 

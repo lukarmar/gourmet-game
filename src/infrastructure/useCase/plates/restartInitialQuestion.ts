@@ -1,10 +1,11 @@
 import chalk from "chalk";
 
 import { ANSWER_NO, ANSWER_YES, QUESTION_PLATE, YES_OR_NO } from "../../data";
-import { Plates } from "../../../domain/entity/plates.entity";
+import { Plates } from "@domain/object-value/plates";
 import { TerminalController } from "../terminal/terminalUseCase";
 
 import { initialQuestion, alternativeDishStep } from './injection'
+import { logInformation } from "@infrastructure/utils/logInformation";
 
 
 class RestartInitialQuestion {
@@ -15,12 +16,12 @@ class RestartInitialQuestion {
 
   async run(currentPlate: Plates, initialPlate: Plates, isCallFn: boolean): Promise<void> {
     const answer = await this.terminalController.question(
-      chalk.blue(`${QUESTION_PLATE} ${currentPlate.category}? ${chalk.bold.underline(YES_OR_NO)} \n`)
+      logInformation(`${QUESTION_PLATE} ${currentPlate.category}? ${chalk.bold.underline(YES_OR_NO)} \n`)
       )
 
       if(answer.toLocaleLowerCase() === ANSWER_YES) {
         const answer = await this.terminalController.question(
-          chalk.blue(`${QUESTION_PLATE} ${currentPlate.name}? ${chalk.bold.underline(YES_OR_NO)} \n`)
+          logInformation(`${QUESTION_PLATE} ${currentPlate.name}? ${chalk.bold.underline(YES_OR_NO)} \n`)
         )
           if(answer.toLocaleLowerCase() === ANSWER_YES || answer.toLocaleLowerCase() === ANSWER_NO) {
             if(answer.toLocaleLowerCase() === ANSWER_YES) {
