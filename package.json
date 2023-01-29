@@ -1,5 +1,5 @@
 {
-  "name": "jogo-gourmet",
+  "name": "gourmet-game",
   "version": "1.0.0",
   "description": "",
   "main": "src/app/index.ts",
@@ -8,7 +8,10 @@
     "prepare": "npx husky install"
   },
   "keywords": [],
-  "author": "",
+  "author": "luka rocha",
+  "engines": {
+    "node": "16"
+  },
   "license": "ISC",
   "dependencies": {
     "chalk": "4.0",

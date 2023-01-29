@@ -1,4 +1,4 @@
-import { Plates } from "plates";
+import { Plates } from "../object-value/plates";
 
 class CollectionPlates {
   private _collection: Plates[]
