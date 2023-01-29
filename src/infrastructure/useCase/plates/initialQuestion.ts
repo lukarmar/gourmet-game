@@ -1,9 +1,11 @@
-import { Plates } from "@domain/entity/plates.entity";
-import { TerminalController } from "@infrastructure/useCase/terminal/terminalUseCase";
+import chalk from "chalk";
 
+import { Plates } from "@domain/object-value/plates";
+import { TerminalController } from "@infrastructure/useCase/terminal/terminalUseCase";
 import { QUESTION_PLATE, ANSWER_NO, ANSWER_YES, YES_OR_NO, BYE_MESSAGE } from "@infrastructure/data";
 import { intermediatePlateStep } from "./injection";
-import chalk from "chalk";
+import { logInformation } from "@infrastructure/utils/logInformation";
+
 
 const platesStartingLasagna = new Plates("Lasanha", "Massa")
 const platesStartingCake = new Plates("Bolo de Chocolate", "Bolo")
@@ -17,7 +19,7 @@ class InitialQuestion {
 
   async run(): Promise<void> {
     const answer = await this.terminalController.question(
-      chalk.blue(`${QUESTION_PLATE} massa? ${chalk.bold.underline(YES_OR_NO)} \n`)
+      logInformation(`${QUESTION_PLATE} massa? ${chalk.bold.underline(YES_OR_NO)} \n`)
     )
 
     this.terminalController.closeTerminal(answer, BYE_MESSAGE)

@@ -1,6 +1,6 @@
 import readline from 'readline'
 import DraftLog  from "draftlog";
-import { COMMAND_CLOSE_TERMINAL } from '../../data';
+import { COMMAND_CLOSE_TERMINAL } from '@infrastructure/data';
 import chalk from 'chalk';
 
 class TerminalController {

@@ -1,10 +1,12 @@
-import { CollectionPlates } from "../../../domain/entity/collectionPlates.entity";
-import { ANSWER_NO, ANSWER_YES, QUESTION_PLATE, YES_OR_NO } from "../../data";
-import { Plates } from "../../../domain/entity/plates.entity";
-import { TerminalController } from "../terminal/terminalUseCase";
 import chalk from "chalk";
+import { CollectionPlates } from "@domain/entity/collectionPlates.entity";
+import { ANSWER_NO, ANSWER_YES, QUESTION_PLATE, YES_OR_NO } from "@infrastructure/data";
+import { Plates } from "@domain/object-value/plates";
+import { TerminalController } from "../terminal/terminalUseCase";
 
 import { initialQuestion, restartInitialQuestion, alternativeDishStep } from './injection'
+import { logInformation } from "@infrastructure/utils/logInformation";
+
 
 
 class IntermediatePlateStep {
@@ -17,7 +19,7 @@ class IntermediatePlateStep {
   async run(currentPlate: Plates): Promise<void> {
     const answer = 
         await this.terminalController.question(
-          chalk.blue(`${QUESTION_PLATE} ${currentPlate.name}? ${chalk.bold.underline(YES_OR_NO)} \n`)
+          logInformation(`${QUESTION_PLATE} ${currentPlate.name}? ${chalk.bold.underline(YES_OR_NO)} \n`)
         )
 
         if(answer.toLocaleLowerCase() === ANSWER_YES || answer.toLocaleLowerCase() === ANSWER_NO){
@@ -30,12 +32,10 @@ class IntermediatePlateStep {
 
           } else {
             const filterPlatesPerCategory = this.collectionPlates.collection.filter(plate => plate.categoryReference === currentPlate.category)
-            console.draft(filterPlatesPerCategory)
 
             if(filterPlatesPerCategory.length > 0) {
               let count = 1
               for await (const plate of filterPlatesPerCategory) {
-                console.log(plate)
                 await restartInitialQuestion.run(plate, currentPlate, count === filterPlatesPerCategory.length);
                 count++;
               }
