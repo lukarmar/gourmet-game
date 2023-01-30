@@ -1,5 +1,3 @@
-import chalk from "chalk";
-
 import { CollectionPlates } from "@domain/entity/collectionPlates.entity";
 import { Plates } from "@domain/object-value/plates";
 import { TerminalController } from "@infrastructure/useCase/terminal/terminalUseCase";
