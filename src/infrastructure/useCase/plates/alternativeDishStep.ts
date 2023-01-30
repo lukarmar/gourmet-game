@@ -1,5 +1,5 @@
-import { CollectionPlates } from "@domain/entity/collectionPlates.entity";
-import { Plates } from "@domain/object-value/plates";
+import { CollectionPlates } from "@domain/plates/entity/collectionPlates.entity";
+import { Plates } from "@domain/plates/object-value/plates";
 import { TerminalController } from "@infrastructure/useCase/terminal/terminalUseCase";
 import { initialQuestion } from './injection'
 import { logInformation } from "@infrastructure/utils/logInformation";
@@ -12,20 +12,20 @@ class AlternativeDishStep {
   ) {}
 
   async run(plate: Plates): Promise<void> {
-    const answerPrato = 
+    const answerPlate = 
     await this.terminalController.question(
       logInformation("Qual prato você pensou? 🙇 \n")
     )
 
     const category = await this.terminalController.question(
-      logInformation(`${answerPrato} é ____ mas ${plate.name} não. \n`)
+      logInformation(`${answerPlate} é ____ mas ${plate.name} não. \n`)
     )
 
-    const newPlate = new Plates(answerPrato, category, plate.category)
-    this.collectionPlates.setPlatesColelction(newPlate)
+    const newPlate = new Plates(answerPlate, category, plate.category)
+    this.collectionPlates.setPlatesCollection(newPlate)
 
     console.draft(
-      logInformation(`${answerPrato} é ${category} mas ${plate.name} não. \n`)
+      logInformation(`${answerPlate} é ${category} mas ${plate.name} não. \n`)
     )
 
     await initialQuestion.run()

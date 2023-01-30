@@ -11,7 +11,7 @@ class CollectionPlates {
     return this._collection
   }
 
-  setPlatesColelction(plate: Plates) {
+  setPlatesCollection(plate: Plates) {
     this._collection.push(plate)
   }
 }

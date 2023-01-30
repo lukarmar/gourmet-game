@@ -1,7 +1,7 @@
 import chalk from "chalk";
-import { CollectionPlates } from "@domain/entity/collectionPlates.entity";
+import { CollectionPlates } from "@domain/plates/entity/collectionPlates.entity";
 import { ANSWER_NO, ANSWER_YES, QUESTION_PLATE, YES_OR_NO } from "@infrastructure/data";
-import { Plates } from "@domain/object-value/plates";
+import { Plates } from "@domain/plates/object-value/plates";
 import { TerminalController } from "../terminal/terminalUseCase";
 
 import { initialQuestion, restartInitialQuestion, alternativeDishStep } from './injection'

@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-import { Plates } from "@domain/object-value/plates";
+import { Plates } from "@domain/plates/object-value/plates";
 import { TerminalController } from "@infrastructure/useCase/terminal/terminalUseCase";
 import { QUESTION_PLATE, ANSWER_NO, ANSWER_YES, YES_OR_NO, BYE_MESSAGE } from "@infrastructure/data";
 import { intermediatePlateStep } from "./injection";

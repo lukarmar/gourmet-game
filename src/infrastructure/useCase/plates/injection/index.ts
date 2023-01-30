@@ -1,4 +1,4 @@
-import { CollectionPlates } from "../../../../domain/entity/collectionPlates.entity";
+import { CollectionPlates } from "@domain/plates/entity/collectionPlates.entity";
 import { TerminalController } from "../../terminal/terminalUseCase";
 
 import { InitialQuestion } from "../initialQuestion";

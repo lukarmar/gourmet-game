@@ -1,7 +1,7 @@
 import chalk from "chalk";
 
 import { ANSWER_NO, ANSWER_YES, QUESTION_PLATE, YES_OR_NO } from "../../data";
-import { Plates } from "@domain/object-value/plates";
+import { Plates } from "@domain/plates/object-value/plates";
 import { TerminalController } from "../terminal/terminalUseCase";
 
 import { initialQuestion, alternativeDishStep } from './injection'
